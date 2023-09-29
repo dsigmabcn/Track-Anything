@@ -65,8 +65,8 @@ def download_video():
         return str(e)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=args.port)
+    app.run(debug=True, host="0.0.0.0", port=args.port, share = True)
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=12212, debug=True)
+    app.run(host="0.0.0.0",port=12212, debug=True, share = True)
