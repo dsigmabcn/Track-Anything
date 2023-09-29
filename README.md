@@ -33,6 +33,8 @@
 
 ## :rocket: Updates
 
+- 
+
 - 2023/05/02: We uploaded tutorials in steps :world_map:. Check [HERE](./doc/tutorials.md) for more details.
 
 - 2023/04/29: We improved inpainting by decoupling GPU memory usage and video length. Now Track-Anything can inpaint videos with any length! :smiley_cat: Check [HERE](https://github.com/gaomingqi/Track-Anything/issues/4#issuecomment-1528198165) for our GPU memory requirements. 
@@ -68,12 +70,24 @@ https://user-images.githubusercontent.com/28050374/232959816-07f2826f-d267-4dda-
 ## :computer: Get Started
 #### Linux & Windows
 ```shell
+# Go to your workspace
+cd workspace
+
 # Clone the repository:
 git clone https://github.com/gaomingqi/Track-Anything.git
 cd Track-Anything
 
+# Create python environment
+python -m venv tany
+source tany/bin/activate
+
 # Install dependencies: 
 pip install -r requirements.txt
+
+# Install additional packages
+apt install -y libgl1-mesa-glx
+python -m pip install --upgrade pip setuptools wheel
+pip install torch==1.13.0+cu117 torchvision==0.14.0+cu117 torchaudio==0.13.0 --extra-index-url https://download.pytorch.org/whl/cu117
 
 # Run the Track-Anything gradio demo.
 python app.py --device cuda:0
