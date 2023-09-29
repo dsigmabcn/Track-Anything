@@ -74,7 +74,7 @@ https://user-images.githubusercontent.com/28050374/232959816-07f2826f-d267-4dda-
 cd workspace
 
 # Clone the repository:
-git clone https://github.com/gaomingqi/Track-Anything.git
+git clone https://github.com/dsigmabcn/Track-Anything.git
 cd Track-Anything
 
 # Create python environment
