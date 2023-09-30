@@ -326,13 +326,23 @@ def vos_tracking_video(video_state, interactive_state, mask_dropdown):
     ##################################### SAVE MASKS ################
     if not os.path.exists('./result/mask/{}'.format(video_state["video_name"].split('.')[0])):
         os.makedirs('./result/mask/{}'.format(video_state["video_name"].split('.')[0]))
+        os.makedirs('./result/image_mask/{}'.format(video_state["video_name"].split('.')[0]))
+
     i = 0
     print("save mask")
     for mask in video_state["masks"]:
         #np.save(os.path.join('./result/mask/{}'.format(video_state["video_name"].split('.')[0]), '{:05d}.npy'.format(i)), mask)
         mask_png = Image.fromarray(mask).convert('P')
-        mask_png.putpalette(_palette)
+        mask_png.putpalette(_palette) #WE NEED A PALETTE OTHERWISE IT IS ALL BLACK. _palette is at the beginning of the code
         mask_png.save(os.path.join('./result/mask/{}'.format(video_state["video_name"].split('.')[0]), '{:05d}.png'.format(i)))
+        i+=1
+
+    i = 0
+    print("save image with masks")
+    for image in video_state["painted_images"]:
+        image_png = Image.fromarray(image).convert('P')
+        #image_png.putpalette(_palette) WE DO NOT NEED THE PALETTE FOR THE IMAGE WITH THE MASKS
+        image_png.save(os.path.join('./result/image_mask/{}'.format(video_state["video_name"].split('.')[0]), '{:05d}.png'.format(i)))
         i+=1
     ###################################################3
     print("For generating this tracking result, inference times: {}, click times: {}, positive: {}, negative: {}".format(interactive_state["inference_times"], 
